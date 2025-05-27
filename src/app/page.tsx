@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
+import { ToastContainer, toast } from "react-toastify";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -77,14 +77,17 @@ export default function ProfileForm() {
 
       form.reset();
 
-      alert("Cadastro realizado com sucesso!");
+      toast.success("Cadastro realizado com sucesso!");
     } catch (error) {
       console.error("Erro no cadastro:", error);
 
-      alert(
-        error instanceof Error ? error.message : "Ocorreu um erro inesperado"
-      );
+      toast.success("Cadastro realizado com sucesso!");
     }
+  }
+
+  function testToast() {
+    toast.success("Cadastro realizado com sucesso!");
+    console.log("clicado");
   }
 
   return (
@@ -165,7 +168,9 @@ export default function ProfileForm() {
               </FormItem>
             )}
           />
-          <Button type="submit">Submit</Button>
+          <Button type="submit">Registrar</Button>
+
+          <ToastContainer />
         </form>
       </Form>
     </div>
