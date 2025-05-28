@@ -14,6 +14,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import Link from "next/link";
 
 const schema = z.object({
   nome_completo: z.string().min(5, {
@@ -58,7 +59,7 @@ export default function ProfileForm() {
       observacao: "",
     },
   });
-  
+
   async function onSubmit(payload: z.infer<typeof schema>) {
     try {
       const response = await fetch(
@@ -167,7 +168,7 @@ export default function ProfileForm() {
             )}
           />
           <Button type="submit">Registrar</Button>
-
+          <Link href={'/lista-usuarios'} className="flex justify-center">Ver usuários cadastrados</Link>
           <ToastContainer />
         </form>
       </Form>
