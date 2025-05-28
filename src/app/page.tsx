@@ -58,16 +58,19 @@ export default function ProfileForm() {
       observacao: "",
     },
   });
-
+  
   async function onSubmit(payload: z.infer<typeof schema>) {
     try {
-      const response = await fetch("http://localhost:3005/api/alunos", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
+      const response = await fetch(
+        "https://backend-9dot.onrender.com/api/alunos",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
 
       const data = await response.json();
 
@@ -83,11 +86,6 @@ export default function ProfileForm() {
 
       toast.success("Cadastro realizado com sucesso!");
     }
-  }
-
-  function testToast() {
-    toast.success("Cadastro realizado com sucesso!");
-    console.log("clicado");
   }
 
   return (
