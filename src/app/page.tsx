@@ -62,16 +62,13 @@ export default function ProfileForm() {
 
   async function onSubmit(payload: z.infer<typeof schema>) {
     try {
-      const response = await fetch(
-        `${process.env.API}/api/alunos`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        }
-      );
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API}/api/alunos`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
 
       const data = await response.json();
 
@@ -88,6 +85,8 @@ export default function ProfileForm() {
       toast.success("Cadastro realizado com sucesso!");
     }
   }
+
+  console.log("NEXT_PUBLIC_API:", process.env.NEXT_PUBLIC_API);
 
   return (
     <div className="bg-zinc-100 h-screen w-screen flex justify-center items-center">
@@ -168,7 +167,9 @@ export default function ProfileForm() {
             )}
           />
           <Button type="submit">Registrar</Button>
-          <Link href={'/lista-usuarios'} className="flex justify-center">Ver usuários cadastrados</Link>
+          <Link href={"/lista-usuarios"} className="flex justify-center">
+            Ver usuários cadastrados
+          </Link>
           <ToastContainer />
         </form>
       </Form>

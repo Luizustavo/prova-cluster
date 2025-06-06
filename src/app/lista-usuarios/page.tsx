@@ -21,7 +21,7 @@ export default function ListaUsuarios() {
   useEffect(() => {
     const fetchAlunos = async () => {
       try {
-        const response = await fetch(`${process.env.API}/api/alunos`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API}/api/alunos`);
 
         if (!response.ok) {
           throw new Error(`Erro HTTP: ${response.status}`);
