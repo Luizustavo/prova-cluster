@@ -63,7 +63,7 @@ export default function ProfileForm() {
   async function onSubmit(payload: z.infer<typeof schema>) {
     try {
       const response = await fetch(
-        "https://backend-9dot.onrender.com/api/alunos",
+        `${process.env.API}/api/alunos`,
         {
           method: "POST",
           headers: {
